@@ -51,8 +51,9 @@ class Controller extends BaseController
         try {
             // TODO : if $relation === null , sort/filter doesn't work, why????
             $model = is_string($model) ? new $model() : $model;
+            $stringify = strtolower(explode('\\', get_class($model))[sizeof(explode('\\', get_class($model))) - 1]);
             $model = $relation ? $model->with($relation) : $model->withoutRelations();
-            if ($modelSortBy === 'user'):
+            if ($modelSortBy === $stringify):
                 $model->orderBy($tableSortBy, $direction);
             else:
                 // TODO : else sort by relationship
@@ -65,7 +66,7 @@ class Controller extends BaseController
                     $modelSearchBy = explode('__', $q)[1];
                     $tableSearchBy = explode('__', $q)[2];
                     $valueSearchBy = $query[$q];
-                    if ($modelSearchBy === 'user'):
+                    if ($modelSearchBy === $stringify):
                         $model->where($tableSearchBy, 'like', $valueSearchBy . '%');
                     else:
                         $model->whereHas($modelSearchBy, function (Builder $q) use ($valueSearchBy, $tableSearchBy) {
