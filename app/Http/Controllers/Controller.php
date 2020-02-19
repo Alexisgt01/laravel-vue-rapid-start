@@ -50,7 +50,7 @@ class Controller extends BaseController
         $direction   = $request->query('direction');
         try {
             // TODO : if $relation === null , sort/filter doesn't work, why????
-            $model = new $model();
+            $model = is_string($model) ? new $model() : $model;
             $model = $relation ? $model->with($relation) : $model->withoutRelations();
             if ($modelSortBy === 'user'):
                 $model->orderBy($tableSortBy, $direction);
