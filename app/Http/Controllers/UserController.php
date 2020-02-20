@@ -24,7 +24,7 @@ class UserController extends Controller
 
             return response()->json(['message' => __('commons.response.success....')]);
         }
-        return response()->json($e, 400);
+        return response()->json($e, 422);
     }
 
     /**
