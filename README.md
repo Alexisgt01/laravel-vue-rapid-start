@@ -60,7 +60,7 @@ In a second terminal
  
  Find id/pass and create your own users in 
  
- ``Zenvue/database/seeds/UsersTableSeeder.php``
+ ``database/seeds/UsersTableSeeder.php``
 
  ## Update translation in .vue file 
 
