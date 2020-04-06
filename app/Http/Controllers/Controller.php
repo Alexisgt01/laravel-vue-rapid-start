@@ -39,25 +39,21 @@ class Controller extends BaseController
     /**
      * @param Request $request
      * @param $model
-     * @param null $relation
+     * @param $stringify
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function pagination(Request $request, $model, $relation = null)
+    protected function pagination(Request $request, $model, string $stringify)
     {
         $modelSortBy = explode('__', $request->query('sort'))[0];
         $tableSortBy = explode('__', $request->query('sort'))[1];
         $query       = $request->query();
         $direction   = $request->query('direction');
         try {
-            // TODO : if $relation === null , sort/filter doesn't work, why????
-            $model = new $model();
-            $model = $relation ? $model->with($relation) : $model->withoutRelations();
-            if ($modelSortBy === 'user'):
+            if ($modelSortBy === $stringify):
                 $model->orderBy($tableSortBy, $direction);
             else:
                 // TODO : else sort by relationship
                 // @see : https://stackoverflow.com/questions/59806135/laravel-how-to-sort-by-related-model-with-pagination-filter
-                // help me :)
             endif;
 
             foreach (array_keys($query) as $q) {
@@ -65,6 +61,9 @@ class Controller extends BaseController
                     $modelSearchBy = explode('__', $q)[1];
                     $tableSearchBy = explode('__', $q)[2];
                     $valueSearchBy = $query[$q];
+                    if ($tableSearchBy === 'created_at') {
+                        // TODO : handling date format
+                    }
                     if ($modelSearchBy === 'user'):
                         $model->where($tableSearchBy, 'like', $valueSearchBy . '%');
                     else:

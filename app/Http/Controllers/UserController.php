@@ -35,7 +35,7 @@ class UserController extends Controller
     public function list(Request $request)
     {
         return response()->json([
-            'items' => $this->pagination($request, 'App\User', 'infos')
+            'items' => $this->pagination($request, User::with('infos'), 'user')
         ]);
     }
 }
