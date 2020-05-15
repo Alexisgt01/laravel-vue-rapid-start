@@ -40,7 +40,8 @@ return [
 
     'response' => [
         'success' => [
-            'logout' => 'Déconnexion...'
+            'logout' => 'Déconnexion...',
+            'login'  => "Bonjour :user",
         ],
 
         'error' => [

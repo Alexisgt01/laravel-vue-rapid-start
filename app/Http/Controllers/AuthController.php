@@ -50,6 +50,7 @@ class AuthController extends Controller
             'token_type'   => 'bearer',
             'auth'         => true,
             'me'           => Auth::guard()->user(),
+            'message' => __('commons.response.success.login', ['user' => Auth::guard()->user()->name])
         ]);
     }
 

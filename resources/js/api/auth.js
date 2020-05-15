@@ -18,7 +18,7 @@ export async function login(email, password) {
 }
 
 export function logout() {
-    api.get('logout').then((r) => {
+    return api.post('logout').then((r) => {
         return r.data;
     });
 }

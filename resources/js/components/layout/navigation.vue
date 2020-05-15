@@ -11,14 +11,13 @@
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <v-btn @click="logout">logout</v-btn>
+            <v-btn @click="signout">logout</v-btn>
         </v-list>
     </v-navigation-drawer>
 </template>
 
 <script>
     import {mapActions} from 'vuex';
-    import {logout} from "../../api/auth";
 
     export default {
         name: "navigation",
@@ -31,7 +30,12 @@
             this.getRoutes();
         },
         methods: {
-            logout,
+            signout() {
+                this.$store.dispatch('auth/logout').then((r) => {
+                    this.showSuccess(r);
+                    this.$router.push('/login');
+                });
+            },
             ...mapActions('routes', [
                 'addPage'
             ]),
