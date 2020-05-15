@@ -21,6 +21,7 @@ const routes = [
                 icon: 'fas fa-tachometer-alt',
                 meta: {
                     in_nav: true,
+                    auth: true,
                 }
             },
             {
@@ -30,6 +31,7 @@ const routes = [
                 icon: 'fa fa-check',
                 meta: {
                     in_nav: true,
+                    auth: true,
                 }
             },
         ]

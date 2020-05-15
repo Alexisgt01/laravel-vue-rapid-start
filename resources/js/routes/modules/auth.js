@@ -10,6 +10,10 @@ const routes = {
             path: "login",
             component: () => import('@/views/auth/login'),
             name: "Login",
+            meta: {
+                auth: false,
+            }
+
         },
     ],
 };
