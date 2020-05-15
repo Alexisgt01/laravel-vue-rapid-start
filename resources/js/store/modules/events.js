@@ -8,11 +8,7 @@ const state = {
         //
     },
 
-    alert: {
-        show: false,
-        text: '',
-        color: 'error',
-    }
+    alert: [],
 };
 
 // getters
@@ -44,13 +40,15 @@ const mutations = {
     },
 
     SHOW_ALERT: (state, alert) => {
-        state.alert.show = true;
-        state.alert.text = alert.text;
-        state.alert.color = alert.color;
+        state.alert.push({
+            show: true,
+            text: alert.text,
+            color: alert.color,
+        });
+
         setTimeout(() => {
-            state.alert.show = false;
-            state.alert.text = null;
-        }, 3000)
+            state.alert.shift();
+        }, 5000)
     }
 };
 
