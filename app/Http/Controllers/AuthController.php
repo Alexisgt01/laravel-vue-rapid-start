@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function check()
     {
         if (Auth::guard()->check()) {
-            return response()->json(['user' => $this->respondWithToken(null)]);
+            return $this->respondWithToken(null);
         }
         return response()->json(false);
     }

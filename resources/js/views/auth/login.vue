@@ -55,6 +55,7 @@
                 if (formRules) {
                     this.$store.dispatch('auth/login', {email: this.email, password: this.password}).then((r) => {
                         this.showSuccess(r);
+                        this.$router.push('/dashboard');
                     }).catch((e) => {
                         this.showError(e);
                     })

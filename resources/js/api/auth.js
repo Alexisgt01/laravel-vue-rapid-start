@@ -18,10 +18,8 @@ export async function login(email, password) {
 }
 
 export function logout() {
-    api.get('logout').then(() => {
-        //   localStorage.removeItem('token');
-        //   localStorage.removeItem('user');
-       // router.push('/login');
+    api.get('logout').then((r) => {
+        return r.data;
     });
 }
 
