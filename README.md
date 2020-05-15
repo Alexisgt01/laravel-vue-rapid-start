@@ -43,6 +43,9 @@ DB_PASSWORD=pass
 
 ``php artisan key:generate``
 
+#### Storage folder link
+
+``php artisan storage:link``
 
 ## Start web server
 
@@ -65,3 +68,7 @@ In a second terminal
  ## Update translation in .vue file 
 
  `php artisan cache:clear`
+ 
+ ## Build
+ 
+ ``npm run production``
