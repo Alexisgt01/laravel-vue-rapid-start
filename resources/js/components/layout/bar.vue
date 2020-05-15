@@ -17,9 +17,7 @@
 <script>
     import {mapGetters, mapActions} from 'vuex'
     import hotkeys from 'hotkeys-js';
-    import Crud from '@/api/crud';
 
-    const configController = new Crud('config');
     export default {
         name: "bar",
         data() {
