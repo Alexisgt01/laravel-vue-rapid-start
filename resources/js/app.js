@@ -1,6 +1,6 @@
 import './bootstrap'
 import Vue from 'vue'
-import Index from './views';
+import Index from './layout';
 import VueRouter from 'vue-router';
 import router from './routes/index';
 import vuetify from './plugins/vuetify' // path to vuetify export

@@ -1,5 +1,5 @@
 <template>
-    <v-content v-if="render">
+    <v-content>
         <alert></alert>
         <v-container class="fill-height" fluid>
             <v-row align="center" justify="center">
@@ -31,9 +31,7 @@
 </template>
 
 <script>
-    import {login} from "@/api/auth";
     import rules from '@/directive/rules';
-    import {checkIfNotAuth} from "@/directive/permissions";
     import alert from "@/components/layout/alert";
 
     export default {
@@ -50,17 +48,12 @@
         },
         created() {
             let self = this;
-            checkIfNotAuth().then((r) => {
-                if (r) self.render = true;
-            });
         },
         methods: {
             login() {
                 let formRules = this.$refs.form.validate();
                 if (formRules) {
-                    login(this.email, this.password).catch((e) => {
-                        this.showError(e);
-                    });
+
                 }
             },
         }

@@ -1,16 +1,17 @@
 <template>
-    <v-app>
+    <div>
         <router-view>
 
         </router-view>
-    </v-app>
+    </div>
 </template>
 
 <script>
-    /**
-     * Here the instance
-     */
     export default {
-        name: "views",
+        name: "home"
     }
 </script>
+
+<style scoped>
+
+</style>

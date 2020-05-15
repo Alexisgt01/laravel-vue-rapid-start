@@ -1,4 +1,4 @@
-import Index from '@/views';
+import Index from '@/layout/auth';
 
 const routes = {
     path: '/',

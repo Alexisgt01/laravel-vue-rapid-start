@@ -1,5 +1,4 @@
-import router from '@/routes'
-import {checkRights} from "@/directive/permissions";
+import router from '@/routes';
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 

@@ -2,16 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
-use App\Group;
-use App\Utils\Utils;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
-use App\Registration;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -22,8 +14,8 @@ class AuthController extends Controller
      */
     public function check()
     {
-        if (Auth::check()) {
-            return response()->json(['user' => Auth::User()->id]);
+        if (Auth::guard()->check()) {
+            return response()->json(['user' => $this->respondWithToken(null)]);
         }
         return response()->json(false);
     }
@@ -67,8 +59,8 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        if (Auth::check()):
-            Auth::logout();
+        if (Auth::guard()->user()):
+            Auth::guard()->logout();
         endif;
         return response()->json(['message' => __('commons.response.success.logout')], 200);
     }
