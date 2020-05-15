@@ -1,5 +1,5 @@
 import api from '@/api';
-import router from "../routes";
+
 export async function login(email, password) {
     return api.post('/login', {
             email: email,
@@ -12,20 +12,16 @@ export async function login(email, password) {
             }
         }).then((r) => {
         if (r.data.auth) {
-            localStorage.setItem('token', r.data.access_token);
-            localStorage.setItem('user', JSON.stringify(r.data.me));
-            if (localStorage.token) {
-                window.location = '/dashboard';
-            }
+            return r.data;
         }
     })
 }
 
 export function logout() {
     api.get('logout').then(() => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        router.push('/login');
+        //   localStorage.removeItem('token');
+        //   localStorage.removeItem('user');
+       // router.push('/login');
     });
 }
 

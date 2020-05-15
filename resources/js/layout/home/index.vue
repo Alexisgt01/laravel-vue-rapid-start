@@ -1,5 +1,5 @@
 <template>
-    <div :key="key.global" v-if="render">
+    <div :key="key.global">
         <navigation></navigation>
         <bar></bar>
         <alert></alert>
@@ -13,12 +13,10 @@
 </template>
 
 <script>
-    import {checkAuth} from "@/directive/permissions";
     import navigation from "@/components/layout/navigation";
     import bar from "@/components/layout/bar";
     import {mapActions, mapState} from 'vuex';
     import routes from '@/routes';
-    import Vue from 'vue';
     import loader from "@/components/layout/loader";
     import alert from "@/components/layout/alert";
     import api from '@/api';
@@ -45,25 +43,13 @@
         created() {
 
             let self = this;
-            checkAuth().then((r) => {
-                if (r) self.render = true;
-            });
 
             this.interceptor();
+            this.addPage({
+                name: routes.currentRoute.name,
+                route: routes.currentRoute.path,
+            });
 
-
-            if (localStorage.user && localStorage.token) {
-
-                Vue.prototype.$auth = JSON.parse(localStorage.user);
-
-                /**
-                 * Init tab with current page
-                 */
-                this.addPage({
-                    name: routes.currentRoute.name,
-                    route: routes.currentRoute.path,
-                });
-            }
         },
         methods: {
             ...mapActions('routes', [

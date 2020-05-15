@@ -53,7 +53,11 @@
             login() {
                 let formRules = this.$refs.form.validate();
                 if (formRules) {
-
+                    this.$store.dispatch('auth/login', {email: this.email, password: this.password}).then((r) => {
+                        this.showSuccess(r);
+                    }).catch((e) => {
+                        this.showError(e);
+                    })
                 }
             },
         }

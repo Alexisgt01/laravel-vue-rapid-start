@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-/* eslint-disable no-console */
-
 const instance = axios.create({
-    baseURL: 'http://127.0.0.1:8000/api/',
+    baseURL: `${window.url}/api/`,
     timeout: 5000,
     headers: {
         'Content-Type': 'application/json',

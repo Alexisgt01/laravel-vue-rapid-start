@@ -26,6 +26,7 @@
 </div>
 <script>
     window._translations = {!! cache('translations') !!};
+    window.url = '{{ env('APP_URL') }}'
 </script>
 </body>
 </html>
