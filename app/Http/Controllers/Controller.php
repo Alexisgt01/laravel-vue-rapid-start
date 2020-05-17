@@ -94,4 +94,13 @@ class Controller extends BaseController
         endforeach;
         return $errors;
     }
+
+    protected function validator($r, $callable)
+    {
+        $e = $this->validation($r);
+        if (sizeof($e) === 0) {
+            return $callable();
+        }
+        return response()->json(['message' => $e], 422);
+    }
 }
