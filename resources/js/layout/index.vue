@@ -7,8 +7,8 @@
 </template>
 
 <script>
-    /**s
-     * Here the instance
+    /**
+     * Here the instance for all layout
      */
     import {check} from "@/api/auth";
 

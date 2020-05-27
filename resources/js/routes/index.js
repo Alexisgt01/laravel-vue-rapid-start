@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 
 import Layout from '@/layout/home';
 import auth from './modules/auth';
-
+import post from './modules/post';
 
 Vue.use(VueRouter);
 
@@ -24,19 +24,10 @@ const routes = [
                     auth: true,
                 }
             },
-            {
-                path: '/test',
-                component: () => import('@/views/dashboard/test.vue'),
-                name: 'Test page',
-                icon: 'fa fa-check',
-                meta: {
-                    in_nav: true,
-                    auth: true,
-                }
-            },
         ]
     },
     auth,
+    post,
 ];
 
 const router = new VueRouter({

@@ -12,6 +12,7 @@ const routes = {
             name: "Login",
             meta: {
                 auth: false,
+                in_nav: false,
             }
 
         },
