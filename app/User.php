@@ -32,7 +32,11 @@ class User extends Authenticatable implements JWTSubject
 
     public function infos()
     {
-        return $this->hasMany('App\UsersInfo');
+        return $this->hasMany('App\Info');
+    }
+
+    public function posts() {
+        return $this->hasMany('App\Post');
     }
 
     /**

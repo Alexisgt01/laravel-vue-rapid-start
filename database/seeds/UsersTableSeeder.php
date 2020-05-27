@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
 
     public function run()
     {
+
         $faker = \Faker\Factory::create();
         foreach ($this->users as $u):
             $id = DB::table('users')->insertGetId([

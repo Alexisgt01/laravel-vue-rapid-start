@@ -19,6 +19,7 @@ class UserController extends Controller
     public function store(Request $r)
     {
         return $this->validator($r, function () use ($r) {
+            //
             return response()->json(['message' => __('commons.response.success....')]);
         });
 
