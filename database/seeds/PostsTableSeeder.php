@@ -12,9 +12,10 @@ class PostsTableSeeder extends Seeder
         for ($i = 0; $i < $this->max; $i++) {
             echo explode('\\', get_class())[sizeof(explode('\\', get_class())) - 1] . ' = ' . $i . '/' . $this->max . "\n";
             \Illuminate\Support\Facades\DB::table('posts')->insert([
-                'title'   => $fake->realText(rand(16, 32)),
-                'body'    => $fake->realText(rand(100, 500)),
-                'user_id' => \App\User::all()->random(1)->first()->id,
+                'title'      => $fake->realText(rand(16, 32)),
+                'body'       => $fake->realText(rand(100, 500)),
+                'user_id'    => \App\User::all()->random(1)->first()->id,
+                'created_at' => \Carbon\Carbon::now(),
             ]);
         }
     }
