@@ -1,13 +1,16 @@
 <template>
     <v-app-bar :clipped-left="$vuetify.breakpoint.lgAndUp" app color="blue darken-3" dark>
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
+        <v-app-bar-nav-icon @click.stop="expendDrawer"/>
 
-        <v-tabs slider-color="yellow" background-color="transparent">
-            <v-tab v-for="(tab, n) in open" :key="n" :to="{ path: tab.route }">
-                <v-icon @click.native.prevent="closePage(tab.route)" class="mr-2" size="12">fa fa-times</v-icon>
-                {{tab.name}}
-            </v-tab>
-        </v-tabs>
+        <v-spacer></v-spacer>
+        <template v-slot:extension>
+            <v-tabs class="mt-4 ml-2" background-color="transparent">
+                <v-chip v-for="(tab, n) in open" :key="n" :to="{ path: tab.route }" color="primary" class="ml-2" small
+                    @click.native="pageName = tab.name">{{tab.name}}
+                    <v-icon class="ml-2" size="12" @click.native.prevent="closePage(tab.route)">fa fa-times</v-icon>
+                </v-chip>
+            </v-tabs>
+        </template>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
             <span class="hidden-sm-and-down">Laravel-vue SPA Starter</span>
         </v-toolbar-title>

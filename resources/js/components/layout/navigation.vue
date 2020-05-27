@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer :clipped="$vuetify.breakpoint.lgAndUp" app>
+    <v-navigation-drawer v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" app>
         <v-list dense>
             <v-list-item v-for="(item, i) in items"
                 @click="item.is_logout ? signout() : addPage({name: item.name, route: item.path})" :key="i" link>
@@ -24,6 +24,7 @@
         data() {
             return {
                 items: [],
+                drawer: true,
             }
         },
         created() {

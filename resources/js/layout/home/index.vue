@@ -1,7 +1,7 @@
 <template>
     <div :key="key.global">
-        <navigation></navigation>
-        <bar></bar>
+        <navigation ref="navigation"></navigation>
+        <bar v-on:expendDrawer="expendDrawerEmited"></bar>
         <alert></alert>
         <loader v-if="loader"></loader>
         <v-content>
@@ -52,6 +52,11 @@
 
         },
         methods: {
+            expendDrawerEmited() {
+
+                this.$refs.navigation.drawer = !this.$refs.navigation.drawer
+
+            },
             ...mapActions('routes', [
                 'addPage'
             ]),
